@@ -35,7 +35,7 @@ jobs:
       - name: Copy deployment resources
         run: |
           mkdir -p output
-          cp -r ./apps/web/dist/static  ./apps/web/dist/standalone/apps/web
+          cp -r ./apps/web/dist/static ./apps/web/dist/standalone/apps/web/dist
           cp -r ./apps/web/public ./apps/web/dist/standalone/apps/web
           cp -r ./apps/web/dist/standalone/* output/
 
