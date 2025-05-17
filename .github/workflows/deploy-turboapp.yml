@@ -31,8 +31,8 @@ jobs:
       - name: Build and update deployment resources
         run: |
           pnpm turbo run build --filter=web
-          mv ./apps/web/.next/static ./apps/web/standalone/apps/web/.next/static
-          mv ./apps/web/public ./apps/web/.next/standalone/apps/web/public
+          mv ./apps/web/.next/static ./apps/web/standalone/apps/web/.next
+          mv ./apps/web/public ./apps/web/.next/standalone/apps/web
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
