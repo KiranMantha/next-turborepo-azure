@@ -26,11 +26,14 @@ jobs:
         run: |
           corepack enable
           corepack prepare pnpm@latest --activate
-          pnpm install
+          pnpm install --frozen-lockfile
 
-      - name: Build and update deployment resources
+      - name: Build next app
         run: |
           pnpm turbo run build --filter=web
+
+      - name: Copy deployment resources
+        run: |
           mv ./apps/web/.next/static ./apps/web/.next/standalone/apps/web/.next/static
           mv ./apps/web/public ./apps/web/.next/standalone/apps/web/public
 
