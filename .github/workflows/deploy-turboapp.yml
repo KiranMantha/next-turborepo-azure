@@ -21,11 +21,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22.x'
+          cache: 'pnpm'
 
-      - name: npm install, build, and test
+      - name: Enable Corepack + install deps
         run: |
-          npm install
-          npm run build
+          corepack enable
+          corepack prepare pnpm@latest --activate
+          pnpm install
+
+      - name: Build and update deployment resources
+        run: |
+          pnpm turbo run build --filter=web
           mv ./apps/web/.next/static ./apps/web/standalone/apps/web/.next/static
           mv ./apps/web/public ./apps/web/.next/standalone/apps/web/public
 
