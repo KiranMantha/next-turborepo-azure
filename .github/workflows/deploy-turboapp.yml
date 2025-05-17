@@ -35,10 +35,10 @@ jobs:
       - name: Copy deployment resources
         run: |
           mkdir -p output
-          mkdir -p output/.next/static
-          cp -r ./apps/web/.next/standalone/* output/
+          mkdir -p output/dist/static
+          cp -r ./apps/web/dist/standalone/* output/
           cp -r ./apps/web/public output/public
-          cp -r ./apps/web/.next/static output/.next/static
+          cp -r ./apps/web/dist/static output/dist/static
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
