@@ -34,8 +34,10 @@ jobs:
 
       - name: Copy deployment resources
         run: |
-          mv ./apps/web/.next/static ./apps/web/.next/standalone/apps/web/.next/static
-          mv ./apps/web/public ./apps/web/.next/standalone/apps/web/public
+          mkdir -p output
+          cp -r ./apps/web/.next/standalone/* output/
+          cp -r ./apps/web/public output/public
+          cp -r ./apps/web/.next/static output/.next/static
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -44,4 +46,4 @@ jobs:
           app-name: ${{ env.WEBAPP_NAME }}
           slot-name: 'Production'
           publish-profile: ${{ env.APPLICATION_PUBLISH_PROFILE }}
-          package: ./apps/web/.next/standalone
+          package: ./output
