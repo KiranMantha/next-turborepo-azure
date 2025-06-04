@@ -1,20 +1,9 @@
 import { AppProps } from 'next/app';
-
-import localFont from 'next/font/local';
-import '../styles/globals.css';
-
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans'
-});
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono'
-});
+import '../styles/globals.scss';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={`${geistSans.variable} ${geistMono.variable}`}>
+    <main>
       <Component {...pageProps} />
     </main>
   );

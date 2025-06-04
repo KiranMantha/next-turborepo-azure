@@ -1,6 +1,10 @@
+@use './font-face' as *;
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-geist-sans: 'geistSans';
+  --font-geist-mono: 'geistMono';
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,6 +21,7 @@ body {
 }
 
 body {
+  font-family: var(--font-geist-mono);
   color: var(--foreground);
   background: var(--background);
 }
