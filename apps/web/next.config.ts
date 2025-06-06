@@ -6,6 +6,28 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   distDir: 'dist',
   output: 'standalone',
+  async headers() {
+    return [
+      {
+        source: '/api/getNextProps',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*'
+          }
+        ]
+      },
+      {
+        source: '/asset-manifest.json',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*'
+          }
+        ]
+      }
+    ];
+  },
   webpack(config) {
     config.plugins.push(
       new WebpackAssetsManifest({
